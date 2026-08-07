@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | Employee Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1>My Account</h1>
+        <p>Your registered employee profile.</p>
+      </div>
+
+      <% if (summary.banner) { %>
+        <div class="alert alert-<%= summary.banner.type %>"><%= summary.banner.message %></div>
+      <% } %>
+
+      <div class="card" style="max-width: 520px;">
+        <dl class="profile-list">
+          <dt>Name</dt>
+          <dd><%= employee.name %></dd>
+
+          <dt>Email</dt>
+          <dd><%= employee.email %></dd>
+
+          <dt>Date of Birth</dt>
+          <dd><%= formatDob(employee.dob) %></dd>
+
+          <dt>Department</dt>
+          <dd><%= employee.department %></dd>
+
+          <dt>Category / Status</dt>
+          <dd>
+            <%= summary.category %> —
+            <% if (summary.status === 'Active') { %>
+              <span class="badge badge-success">Active</span>
+            <% } else if (summary.status === 'Probation') { %>
+              <span class="badge badge-warning">On Probation</span>
+            <% } else if (summary.status === 'Notice Period') { %>
+              <span class="badge badge-warning">Notice Period</span>
+            <% } else if (summary.status === 'Resigned') { %>
+              <span class="badge badge-muted">Resigned</span>
+            <% } %>
+          </dd>
+
+          <dt>Leave Balance</dt>
+          <dd>
+            <strong style="font-size: 1.1rem; color: <%= summary.balance >= 0 ? '#10b981' : '#ef4444' %>;">
+              <%= summary.balance.toFixed(2) %>
+            </strong>
+            <% if (summary.lop > 0) { %>
+              <span style="color: #ef4444; font-size: 0.9rem;"> (LOP: <%= summary.lop.toFixed(2) %>)</span>
+            <% } %>
+          </dd>
+        </dl>
+
+        <div class="btn-group" style="margin-top: 1.5rem;">
+          <a href="/employee/leave" class="btn btn-primary">View Leave Balance</a>
+          <a href="/birthdays" class="btn btn-secondary">View Birthdays</a>
+          <form method="POST" action="/logout" style="display: inline;">
+            <button type="submit" class="btn btn-secondary">Sign Out</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

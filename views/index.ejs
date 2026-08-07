@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Employee Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>Welcome to Employee Portal</h1>
+        <p>Register your details, sign in with your password, celebrate birthdays, and keep employee records up to date.</p>
+      </section>
+
+      <div class="card-grid">
+        <a href="/register" class="feature-card">
+          <div class="icon blue">📝</div>
+          <h3>Employee Registration</h3>
+          <p>First-time employees can register their name, date of birth, and department.</p>
+        </a>
+
+        <a href="/birthdays" class="feature-card">
+          <div class="icon purple">🎂</div>
+          <h3>This Month's Birthdays</h3>
+          <p>See who's celebrating a birthday this month across all departments.</p>
+        </a>
+
+        <a href="/login" class="feature-card">
+          <div class="icon green">🔐</div>
+          <h3>Employee Sign In</h3>
+          <p>Access your profile with your email and password.</p>
+        </a>
+
+        <a href="/accounts" class="feature-card" style="border: 2px solid #2563eb; background: #eff6ff;">
+          <div class="icon blue">📅</div>
+          <h3>Attendance Tracking</h3>
+          <p>For Accounts team: mark daily attendance and leaves for any employee. View monthly calendar per employee.</p>
+        </a>
+
+        <a href="/admin/login" class="feature-card">
+          <div class="icon green">⚙️</div>
+          <h3>Admin Dashboard</h3>
+          <p>Administrators can view, edit, and manage all employee records.</p>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

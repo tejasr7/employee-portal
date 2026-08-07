@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Employee | Employee Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1>Edit Employee</h1>
+        <p>Update details for <strong><%= employee.name %></strong>.</p>
+      </div>
+
+      <div class="card" style="max-width: 520px;">
+        <% if (error) { %>
+          <div class="alert alert-error"><%= error %></div>
+        <% } %>
+
+        <form method="POST" action="/admin/employees/<%= employee.id %>/edit">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" value="<%= employee.name %>" required>
+          </div>
+
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" value="<%= employee.dob %>" required>
+          </div>
+
+          <div class="form-group">
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+              <% departments.forEach(function(dept) { %>
+                <option value="<%= dept %>" <%= employee.department === dept ? 'selected' : '' %>><%= dept %></option>
+              <% }); %>
+              <% if (!departments.includes(employee.department)) { %>
+                <option value="<%= employee.department %>" selected><%= employee.department %></option>
+              <% } %>
+            </select>
+          </div>
+
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="/admin" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

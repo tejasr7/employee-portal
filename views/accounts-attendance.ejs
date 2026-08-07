@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance — <%= employee.name %> | Employee Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .day-cell { padding: 0.5rem; text-align: center; border-radius: 4px; min-height: 60px; }
+    .day-cell.empty { background: #fafafa; }
+    .day-cell .date-num { font-size: 0.85rem; color: #6b7280; }
+    .day-cell .status-pill { display: inline-block; margin-top: 0.25rem; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; }
+    .status-P { background: #d1fae5; color: #065f46; }
+    .status-A { background: #fee2e2; color: #991b1b; }
+    .status-H { background: #e5e7eb; color: #374151; }
+    .status-WFH { background: #fef3c7; color: #92400e; }
+    .status-PH { background: #dbeafe; color: #1e40af; }
+    .status-AH { background: #fce7f3; color: #9d174d; }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+    .calendar-grid .dow { text-align: center; font-weight: 600; color: #6b7280; padding: 0.5rem; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="container">
+      <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1>Attendance — <%= employee.name %></h1>
+          <p>
+            <small style="color:#6b7280;"><%= employee.email %> · <%= employee.department %> · <%= employee.category || 'Employee' %></small>
+          </p>
+        </div>
+        <a href="/accounts" class="btn btn-secondary">← Back to List</a>
+      </div>
+
+      <% if (message) { %>
+        <div class="alert alert-success"><%= message %></div>
+      <% } %>
+      <% if (error) { %>
+        <div class="alert alert-error"><%= error %></div>
+      <% } %>
+
+      <div class="card" style="margin-bottom: 1rem;">
+        <form method="GET" action="/accounts/employees/<%= employee.id %>" style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+          <label for="month">Month:</label>
+          <input type="month" id="month" name="month" value="<%= month %>" style="padding: 0.4rem 0.6rem; border:1px solid #d1d5db; border-radius:6px;">
+          <button type="submit" class="btn btn-secondary">Go</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom: 0.75rem;">Quick Mark</h3>
+        <form method="POST" action="/accounts/employees/<%= employee.id %>/attendance" style="display: grid; grid-template-columns: 1fr 1fr 2fr auto; gap: 0.5rem; align-items: end;">
+          <div class="form-group" style="margin: 0;">
+            <label for="date" style="font-size:0.85rem;">Date</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label for="status" style="font-size:0.85rem;">Status</label>
+            <select id="status" name="status" required>
+              <% attendanceStatuses.forEach(function(s) { %>
+                <option value="<%= s %>"><%= s %> — <%=
+                  s === 'P' ? 'Present' :
+                  s === 'A' ? 'Absent (full leave)' :
+                  s === 'H' ? 'Holiday' :
+                  s === 'WFH' ? 'Work from home' :
+                  s === 'PH' ? 'Present half-day' :
+                  s === 'AH' ? 'Absent half-day' : ''
+                %></option>
+              <% }); %>
+            </select>
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label for="notes" style="font-size:0.85rem;">Notes (optional)</label>
+            <input type="text" id="notes" name="notes" placeholder="e.g. Sick leave, client visit…">
+          </div>
+          <button type="submit" class="btn btn-primary">Mark</button>
+        </form>
+      </div>
+
+      <div class="card" style="margin-top: 1rem;">
+        <h3 style="margin-bottom: 0.75rem;"><%= month %> — Calendar</h3>
+        <% const firstDate = new Date(month + '-01T00:00:00'); %>
+        <% const firstDow = firstDate.getDay(); %>
+        <div class="calendar-grid">
+          <div class="dow">Sun</div>
+          <div class="dow">Mon</div>
+          <div class="dow">Tue</div>
+          <div class="dow">Wed</div>
+          <div class="dow">Thu</div>
+          <div class="dow">Fri</div>
+          <div class="dow">Sat</div>
+          <% for (let i = 0; i < firstDow; i++) { %>
+            <div></div>
+          <% } %>
+          <% days.forEach(function(d) { %>
+            <div class="day-cell <%= d.record ? '' : 'empty' %>" title="<%= d.date %>">
+              <div class="date-num"><%= d.day %></div>
+              <% if (d.record) { %>
+                <span class="status-pill status-<%= d.record.status %>"><%= d.record.status %></span>
+                <form method="POST" action="/accounts/employees/<%= employee.id %>/attendance/<%= d.date %>/delete" style="margin-top:4px;" onsubmit="return confirm('Remove attendance for <%= d.date %>?');">
+                  <button type="submit" style="background:none; border:none; color:#ef4444; cursor:pointer; font-size:0.7rem; padding:0;">remove</button>
+                </form>
+              <% } %>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

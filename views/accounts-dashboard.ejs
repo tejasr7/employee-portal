@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accounts Dashboard | Employee Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="container">
+      <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1>Accounts Dashboard <span class="admin-badge">Accounts</span></h1>
+          <p>Manage attendance and mark leaves for any employee.</p>
+        </div>
+        <form method="POST" action="/accounts/logout">
+          <button type="submit" class="btn btn-secondary">Sign Out</button>
+        </form>
+      </div>
+
+      <% if (message) { %>
+        <div class="alert alert-success"><%= message %></div>
+      <% } %>
+
+      <div class="card">
+        <form method="GET" action="/accounts" style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
+          <input
+            type="search"
+            name="q"
+            value="<%= query || '' %>"
+            placeholder="Search by name, email, or department…"
+            style="flex: 1; min-width: 200px; padding: 0.5rem 0.75rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.95rem;">
+          <button type="submit" class="btn btn-primary">Search</button>
+          <% if (query) { %>
+            <a href="/accounts" class="btn btn-secondary">Clear</a>
+          <% } %>
+          <span style="color: #6b7280; font-size: 0.9rem; margin-left: auto;">
+            <strong><%= employees.length %></strong> shown
+          </span>
+        </form>
+
+        <% if (employees.length === 0) { %>
+          <div class="empty-state">
+            <div class="emoji">🔍</div>
+            <h3><%= query ? 'No matches' : 'No employees yet' %></h3>
+          </div>
+        <% } else { %>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Department</th>
+                  <th>Status</th>
+                  <th>Balance</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% employees.forEach(function(emp) { %>
+                  <% var bal = leaveBalances[emp.id]; %>
+                  <tr>
+                    <td><strong><%= emp.name %></strong><br><small style="color:#6b7280"><%= emp.email || '' %></small></td>
+                    <td><%= emp.department %></td>
+                    <td>
+                      <% if (emp.status === 'Active') { %>
+                        <span class="badge badge-success">Active</span>
+                      <% } else if (emp.status === 'Probation') { %>
+                        <span class="badge badge-warning">Probation</span>
+                      <% } else if (emp.status === 'Notice Period') { %>
+                        <span class="badge badge-warning">Notice</span>
+                      <% } else if (emp.status === 'Resigned') { %>
+                        <span class="badge badge-muted">Resigned</span>
+                      <% } %>
+                      <small style="color:#6b7280;"><%= emp.category || 'Employee' %></small>
+                    </td>
+                    <td>
+                      <% if (bal) { %>
+                        <strong><%= bal.balance.toFixed(2) %></strong>
+                        <% if (bal.lop > 0) { %>
+                          <small style="color:#ef4444;"> (LOP <%= bal.lop.toFixed(2) %>)</small>
+                        <% } %>
+                      <% } else { %>
+                        <span style="color:#9ca3af;">—</span>
+                      <% } %>
+                    </td>
+                    <td>
+                      <a href="/accounts/employees/<%= emp.id %>" class="btn btn-primary btn-sm">Mark Attendance</a>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        <% } %>
+      </div>
+
+      <div class="card" style="margin-top: 1rem;">
+        <h3 style="margin-bottom: 0.5rem;">Attendance status codes</h3>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; font-size: 0.9rem;">
+          <span class="badge badge-success">P</span> Present
+          <span class="badge badge-danger">A</span> Absent (full leave)
+          <span class="badge badge-muted">H</span> Holiday
+          <span class="badge badge-warning">WFH</span> Work from home
+          <span class="badge badge-success">PH</span> Present half-day
+          <span class="badge badge-danger">AH</span> Absent half-day (half leave)
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

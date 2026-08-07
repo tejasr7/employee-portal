@@ -1,0 +1,26 @@
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">EP</span>
+      Employee Portal
+    </a>
+    <nav>
+      <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Home</a>
+      <a href="/register" class="<%= currentPath === '/register' ? 'active' : '' %>">Register</a>
+      <a href="/birthdays" class="<%= currentPath === '/birthdays' ? 'active' : '' %>">Birthdays</a>
+      <% if (isAccounts && !isAdmin) { %>
+        <a href="/accounts" class="<%= currentPath.startsWith('/accounts') ? 'active' : '' %>">Attendance</a>
+      <% } %>
+      <% if (isEmployee && !isAccounts && !isAdmin) { %>
+        <a href="/employee" class="<%= currentPath === '/employee' ? 'active' : '' %>">My Account</a>
+      <% } else if (!isEmployee && !isAccounts && !isAdmin) { %>
+        <a href="/login" class="<%= currentPath === '/login' ? 'active' : '' %>">Sign In</a>
+      <% } %>
+      <% if (isAdmin) { %>
+        <a href="/admin" class="<%= currentPath.startsWith('/admin') && currentPath !== '/admin/login' ? 'active' : '' %>">Admin</a>
+      <% } else if (!isAccounts) { %>
+        <a href="/admin/login" class="<%= currentPath === '/admin/login' ? 'active' : '' %>">Admin</a>
+      <% } %>
+    </nav>
+  </div>
+</header>

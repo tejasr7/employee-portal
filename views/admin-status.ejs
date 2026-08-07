@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status | Employee Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1>Employee Status</h1>
+        <p>Set category, status (New Joinee / Notice Period), and key dates for <strong><%= employee.name %></strong>.</p>
+      </div>
+
+      <% if (message) { %>
+        <div class="alert alert-success"><%= message %></div>
+      <% } %>
+      <% if (error) { %>
+        <div class="alert alert-error"><%= error %></div>
+      <% } %>
+
+      <div class="card" style="max-width: 720px;">
+        <form method="POST" action="/admin/employees/<%= employee.id %>/status">
+          <h3 style="margin-bottom: 0.75rem;">Role</h3>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <option value="Employee" <%= employee.category === 'Employee' ? 'selected' : '' %>>Employee</option>
+              <option value="Intern" <%= employee.category === 'Intern' ? 'selected' : '' %>>Intern</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="role">Access Role</label>
+            <select id="role" name="role">
+              <option value="employee" <%= (!employee.role || employee.role === 'employee') ? 'selected' : '' %>>Employee (standard)</option>
+              <option value="accounts" <%= employee.role === 'accounts' ? 'selected' : '' %>>Accounts (mark attendance)</option>
+              <option value="admin" <%= employee.role === 'admin' ? 'selected' : '' %>>Admin (full access)</option>
+            </select>
+            <small style="color: #6b7280; font-size: 0.85rem;">
+              <strong>Accounts</strong> users can sign in at <code>/accounts/login</code> and mark daily attendance / leaves for any employee.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="Active" <%= employee.status === 'Active' ? 'selected' : '' %>>Active</option>
+              <option value="Probation" <%= employee.status === 'Probation' ? 'selected' : '' %>>Probation (Employee, New Joinee)</option>
+              <option value="Notice Period" <%= employee.status === 'Notice Period' ? 'selected' : '' %>>Notice Period</option>
+              <option value="Resigned" <%= employee.status === 'Resigned' ? 'selected' : '' %>>Resigned</option>
+            </select>
+            <small style="color: #6b7280; font-size: 0.85rem;">
+              <strong>Probation</strong> applies only when category is <strong>Employee</strong> — interns don't go on probation.
+              Post-probation, balance accumulates at 1.5 leaves/month.
+              <br>
+              <strong>Notice Period</strong> requires a last working day below. Leaves after that are LOP.
+            </small>
+          </div>
+
+          <hr style="margin: 1.25rem 0; border: none; border-top: 1px solid #e5e7eb;">
+
+          <h3 style="margin-bottom: 0.75rem;">Internship</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label for="internship_start">Internship Start Date</label>
+              <input type="date" id="internship_start" name="internship_start" value="<%= employee.internship_start || '' %>">
+            </div>
+            <div class="form-group">
+              <label for="internship_end">Internship End Date</label>
+              <input type="date" id="internship_end" name="internship_end" value="<%= employee.internship_end || '' %>">
+              <small style="color: #6b7280; font-size: 0.8rem;">Leave blank if still an intern.</small>
+            </div>
+          </div>
+
+          <hr style="margin: 1.25rem 0; border: none; border-top: 1px solid #e5e7eb;">
+
+          <h3 style="margin-bottom: 0.75rem;">Employment</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label for="joining_date">Employment Start Date</label>
+              <input type="date" id="joining_date" name="joining_date" value="<%= employee.joining_date || '' %>">
+              <small style="color: #6b7280; font-size: 0.8rem;">Used to compute probation end (+3 months) when status is Probation.</small>
+            </div>
+            <div class="form-group">
+              <label for="date_of_resignation">Date of Resignation</label>
+              <input type="date" id="date_of_resignation" name="date_of_resignation" value="<%= employee.date_of_resignation || '' %>">
+              <small style="color: #6b7280; font-size: 0.8rem;">Required when status is "Notice Period".</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notice_period_end">Last Working Day (Employment End Date)</label>
+            <input type="date" id="notice_period_end" name="notice_period_end" value="<%= employee.notice_period_end || '' %>">
+            <small style="color: #6b7280; font-size: 0.8rem;">Required when status is "Notice Period". Leaves after this date are LOP.</small>
+          </div>
+
+          <div class="btn-group" style="margin-top: 1rem;">
+            <button type="submit" class="btn btn-primary">Save Status</button>
+            <a href="/admin" class="btn btn-secondary">Back to Dashboard</a>
+          </div>
+        </form>
+      </div>
+
+      <% if (summary.probationEnd) { %>
+        <div class="card" style="max-width: 720px; margin-top: 1rem;">
+          <h3>Computed</h3>
+          <dl class="profile-list">
+            <dt>Probation Ends</dt>
+            <dd><%= formatDate(summary.probationEnd) %></dd>
+            <dt>Current Status</dt>
+            <dd><%= summary.status %> (<%= summary.category %>)</dd>
+          </dl>
+        </div>
+      <% } %>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

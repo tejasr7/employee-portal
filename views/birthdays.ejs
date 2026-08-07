@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthdays | Employee Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1><%= monthName %> Birthdays 🎉</h1>
+        <p>Employees celebrating their birthday this month.</p>
+      </div>
+
+      <% if (employees.length === 0) { %>
+        <div class="card empty-state">
+          <div class="emoji">🎈</div>
+          <h3>No birthdays this month</h3>
+          <p>Check back later or register as a new employee!</p>
+        </div>
+      <% } else { %>
+        <ul class="birthday-list">
+          <% employees.forEach(function(emp) { %>
+            <% const parts = emp.dob.split('-'); %>
+            <% const day = parseInt(parts[2], 10); %>
+            <% const monthShort = monthName.substring(0, 3); %>
+            <li class="birthday-item">
+              <div class="birthday-avatar"><%= emp.name.charAt(0).toUpperCase() %></div>
+              <div class="birthday-info">
+                <h3><%= emp.name %></h3>
+                <p><%= emp.department %></p>
+              </div>
+              <div class="birthday-date">
+                <div class="day"><%= day %></div>
+                <div class="month"><%= monthShort %></div>
+              </div>
+            </li>
+          <% }); %>
+        </ul>
+      <% } %>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

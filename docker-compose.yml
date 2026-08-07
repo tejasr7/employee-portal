@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_PATH=/data/employees.db
+    volumes:
+      - employee-db:/data
+    restart: unless-stopped
+
+volumes:
+  employee-db:

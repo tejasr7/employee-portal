@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Employee Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .tabs { display: flex; gap: 0; border-bottom: 2px solid #e5e7eb; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .tab { padding: 0.65rem 1.25rem; text-decoration: none; color: #6b7280; font-weight: 500; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.15s; }
+    .tab:hover { color: #111827; }
+    .tab.active { color: #2563eb; border-bottom-color: #2563eb; }
+    .tab .count { display: inline-block; margin-left: 0.4rem; padding: 0.1rem 0.5rem; background: #e5e7eb; color: #374151; border-radius: 999px; font-size: 0.75rem; }
+    .tab.active .count { background: #dbeafe; color: #1e40af; }
+    .role-pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+    .role-employee { background: #f3f4f6; color: #374151; }
+    .role-accounts { background: #dbeafe; color: #1e40af; }
+    .role-admin { background: #fee2e2; color: #991b1b; }
+  </style>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="container">
+      <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1>Admin Dashboard <span class="admin-badge">Admin</span></h1>
+          <p>View, edit, and delete employee records.</p>
+        </div>
+        <form method="POST" action="/admin/logout">
+          <button type="submit" class="btn btn-secondary">Sign Out</button>
+        </form>
+      </div>
+
+      <% if (message) { %>
+        <div class="alert alert-success"><%= message %></div>
+      <% } %>
+
+      <nav class="tabs">
+        <a href="/admin?q=<%= query %>" class="tab <%= tab === 'all' ? 'active' : '' %>">All Employees <span class="count"><%= totalCount %></span></a>
+        <a href="/admin?tab=accounts&q=<%= query %>" class="tab <%= tab === 'accounts' ? 'active' : '' %>">Accounts Users <span class="count"><%= accountsCount %></span></a>
+        <a href="/admin?tab=admins&q=<%= query %>" class="tab <%= tab === 'admins' ? 'active' : '' %>">Admins <span class="count"><%= adminsCount %></span></a>
+      </nav>
+
+      <div class="card">
+        <form method="GET" action="/admin" style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
+          <input type="hidden" name="tab" value="<%= tab %>">
+          <input
+            type="search"
+            name="q"
+            value="<%= query || '' %>"
+            placeholder="Search by name or email…"
+            style="flex: 1; min-width: 200px; padding: 0.5rem 0.75rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.95rem;">
+          <button type="submit" class="btn btn-primary">Search</button>
+          <% if (query) { %>
+            <a href="/admin?tab=<%= tab %>" class="btn btn-secondary">Clear</a>
+          <% } %>
+          <span style="color: #6b7280; font-size: 0.9rem; margin-left: auto;">
+            <strong><%= employees.length %></strong> shown
+          </span>
+        </form>
+
+        <% if (employees.length === 0) { %>
+          <div class="empty-state">
+            <div class="emoji">🔍</div>
+            <h3><%= query ? 'No matches' : 'No employees yet' %></h3>
+            <p><%= query ? 'Try a different search term.' : 'Employees will appear here once they register.' %></p>
+          </div>
+        <% } else { %>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Email</th>
+                  <th>Department</th>
+                  <th>Status</th>
+                  <th>Balance</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% employees.forEach(function(emp) { %>
+                  <% var bal = (typeof leaveBalances !== 'undefined' ? leaveBalances[emp.id] : null); %>
+                  <tr>
+                    <td><strong><%= emp.name %></strong></td>
+                    <td>
+                      <% var role = emp.role || 'employee'; %>
+                      <span class="role-pill role-<%= role %>"><%= role.toUpperCase() %></span>
+                    </td>
+                    <td><small><%= emp.email || '' %></small></td>
+                    <td><%= emp.department %></td>
+                    <td>
+                      <% if (emp.status === 'Active') { %>
+                        <span class="badge badge-success">Active</span>
+                      <% } else if (emp.status === 'Probation') { %>
+                        <span class="badge badge-warning">Probation</span>
+                      <% } else if (emp.status === 'Notice Period') { %>
+                        <span class="badge badge-warning">Notice</span>
+                      <% } else if (emp.status === 'Resigned') { %>
+                        <span class="badge badge-muted">Resigned</span>
+                      <% } else { %>
+                        <span class="badge badge-success">Active</span>
+                      <% } %>
+                      <small style="color: #6b7280;"><%= emp.category || 'Employee' %></small>
+                    </td>
+                    <td>
+                      <% if (bal) { %>
+                        <strong><%= bal.balance.toFixed(2) %></strong>
+                        <% if (bal.lop > 0) { %>
+                          <small style="color: #ef4444;"> (LOP <%= bal.lop.toFixed(2) %>)</small>
+                        <% } %>
+                      <% } else { %>
+                        <span style="color: #9ca3af;">—</span>
+                      <% } %>
+                    </td>
+                    <td>
+                      <div class="btn-group">
+                        <a href="/admin/employees/<%= emp.id %>/edit" class="btn btn-secondary btn-sm">Edit</a>
+                        <a href="/admin/employees/<%= emp.id %>/leave" class="btn btn-secondary btn-sm">Leave</a>
+                        <a href="/admin/employees/<%= emp.id %>/status" class="btn btn-secondary btn-sm">Status</a>
+                        <form method="POST" action="/admin/employees/<%= emp.id %>/delete" style="display:inline" onsubmit="return confirm('Delete <%= emp.name %>? This cannot be undone.');">
+                          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
