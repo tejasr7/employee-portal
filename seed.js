@@ -27,19 +27,31 @@ for (const col of ['email','password_hash','status','category','joining_date','n
 }
 
 const seed = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
+
+const dupes = db.prepare(`
+  DELETE FROM employees
+  WHERE id NOT IN (
+    SELECT MIN(id) FROM employees WHERE email IS NOT NULL GROUP BY email
+  ) AND email IS NOT NULL
+`).run();
+if (dupes.changes > 0) console.log(`[seed] deduped ${dupes.changes} duplicate rows`);
+
+const existingEmails = new Set(db.prepare('SELECT email FROM employees WHERE email IS NOT NULL').all().map(r => r.email));
+const toInsert = seed.filter(r => !r.email || !existingEmails.has(r.email));
+
+if (toInsert.length === 0) {
+  console.log(`[seed] ${existingEmails.size} employees present, nothing to add`);
+  process.exit(0);
+}
+
 const insert = db.prepare(`
-  INSERT OR IGNORE INTO employees
+  INSERT INTO employees
     (name, dob, department, email, password_hash, status, category, joining_date, notice_period_end, internship_start, internship_end, date_of_resignation, role)
   VALUES (@name, @dob, @department, @email, @password_hash, @status, @category, @joining_date, @notice_period_end, @internship_start, @internship_end, @date_of_resignation, @role)
 `);
 
 const tx = db.transaction((rows) => {
-  let added = 0;
-  for (const r of rows) {
-    const info = insert.run(r);
-    if (info.changes > 0) added++;
-  }
-  return added;
+  for (const r of rows) insert.run(r);
 });
-const added = tx(seed);
-console.log(`[seed] ${added} added, ${seed.length - added} already present`);
+tx(toInsert);
+console.log(`[seed] ${toInsert.length} added, ${existingEmails.size} already present`);
