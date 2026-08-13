@@ -1,0 +1,59 @@
+Employe ID,Email ID,Date of Birth,Name,01-Aug,02-Aug,03-Aug,04-Aug,05-Aug,06-Aug,07-Aug,08-Aug,09-Aug,10-Aug,11-Aug,12-Aug,13-Aug,14-Aug,15-Aug,16-Aug,17-Aug,18-Aug,19-Aug,20-Aug,21-Aug,22-Aug,23-Aug,24-Aug,25-Aug,26-Aug,27-Aug,28-Aug,29-Aug,30-Aug,31-Aug,Present,Opt Leave,WFH,Absent,Half-day,Total Leave,Status,Category,Op. leave bal.,Additions,Deductions,Balance,Exception,LOP,,,Leaves break-up,Leave dates,,,,,,,,,,,Total count
+EMP050,rahul.am@2factor.in,12-Apr-1952,Vijay Ambardekar,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,-,-,21,-,-,-,Active,Employee,-,,-,-,-,,,,Alan Jacob,10-Aug,,,,,,,,,,,1
+EMP055,aastha.p@2factor.in,3-May-2004,Aastha Pandey,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,4.00,,-,4.00,-,,,,Allen Thomas,10-Aug,,,,,,,,,,,1
+EMP053,abhishek.s@2factor.in,27-Feb-2004,Abhishek Sharma,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,-,-,21,-,-,-,Active,Employee,7.50,,-,7.50,-,,,,Ayesha Singh,12-Aug,,,,,,,,,,,1
+EMP020,akshay.koli@2factor.in,01-Jun-1989,Akshay Koli,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,13.50,,-,13.50,-,,,,Nibha Sharma,04-Aug,11-Aug,,,,,,,,,,2
+EMP049,alan.j@2factor.in,22-Feb-2001,Alan Jacob,H,H,P,P,P,P,P,H,H,A,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,8,-,-,1,-,1.00,Active,Employee,0.50,,1.00,-,-,(0.50),,,Nikhil Patil,04-Aug,05-Aug,06-Aug,07-Aug,10-Aug,,,,,,,5
+EMP037,allen.t@2factor.in,24-Sep-2003,Allen Thomas,H,H,P,P,P,P,P,H,H,A,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,8,-,-,1,-,1.00,Active,Employee,1.00,,1.00,-,-,,,,Shivam Rai,07-Aug,,,,,,,,,,,1
+EMP005,anish.gala@2factor.in,09-Jan-1995,Anish Gala,H,H,P,P,p,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,13.50,,-,13.50,-,,,,Shivprasad Tripathi,12-Aug,,,,,,,,,,,1
+EMP059,ayesha.s@2factor.in,21-Sep-2004,Ayesha Singh,H,H,P,P,P,P,P,H,H,P,P,A,P,,H,H,,,,,,H,H,,,,,,H,H,,8,-,-,1,-,1.00,Active,Employee,-,,1.00,-,-,(1.00),,,Neha Rajput,10-Aug,,,,,,,,,,,1
+EMP054,ayush.g@2factor.in,05-Sep-2004,Ayush Gajbhiye,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,-,,-,-,-,,,,Vartika Upadhyay,03-Aug,04-Aug,05-Aug,06-Aug,07-Aug,10-Aug,11-Aug,12-Aug,,,,8
+EMP036,gaurav.g@2factor.in,17-Nov-1996,Gaurav Gawande,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,-,,-,-,-,,,,Kartika John,06-Aug,12-Aug,,,,,,,,,,2
+EMP057,gautam.p@2factor.in,02-Apr-2002,Gautam Prajapati,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,WFH,WFH,WFH,WFH,H,H,WFH,-,-,21,-,-,-,Active,Employee,-,,-,-,-,,,,Divya Goyal,10-Aug,13-Aug,,,,,,,,,,2
+EMP041,nibha.s@2factor.in,29-Nov-1998,Nibha Sharma,H,H,P,A,P,P,P,H,H,P,A,P,P,,H,H,,,,,,H,H,,,,,,H,H,,7,-,-,2,-,2.00,Active,Employee,1.00,,2.00,-,-,(1.00),,,Mamta Pal,11-Aug,,,,,,,,,,,1
+EMP052,nikhil.p@2factor.in,13-Jul-1997,Nikhil Patil,H,H,P,A,A,A,A,H,H,A,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,4,-,-,5,-,5.00,Active,Employee,9.50,,5.00,4.50,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP058,piyush.h@2factor.in,28-Dec-2000,Piyush Hingorani,H,H,P,WFH,WFH,WFH,WFH,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,5,-,4,-,-,-,Active,Employee,-,,-,-,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP056,priyancee.a@2factor.in,15-Jun-2005,Priyancee Anthony,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,3.00,,-,3.00,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP001,rahul.am@2factor.in,09-Nov-1988,Rahul Ambardekar,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,7.00,,-,7.00,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP025,reshma.jadhav@2factor.in,17-Jan-1993,Reshma Jadhav,H,H,P,P,P,P,P,H,H,P,P,P,P,P,H,H,,,,,,H,H,,,,,,H,H,,10,-,-,-,-,-,Active,Employee,-,,-,-,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP051,rupesh.p@2factor.in,08-May-2001,Rupesh Patil,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,7.50,,-,7.50,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP047,samuel.g@2factor.in,04-Dec-2000,Samuel Goshi,H,H,P,P,P,P,P,H,H,P/2,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,8,-,-,-,1,0.50,Active,Employee,3.00,,0.50,2.50,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP039,shivam.r@2factor.in,29-Dec-2004,Shivam Rai,H,H,P,P,P,P,A,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,8,-,-,1,-,1.00,Active,Employee,-,,1.00,-,-,(1.00),,,,#VALUE!,,,,,,,,,,,1
+EMP048,shivprasad.t@2factor.in,08-May-1990,Shivprasad Tripathi,H,H,P,P,P,P,P,H,H,P,P,A,P,,H,H,,,,,,H,H,,,,,,H,H,,8,-,-,1,-,1.00,Active,Employee,1.50,,1.00,0.50,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP046,somil.j@2factor.in,15-Jun-2001,Somil Jain,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,P,,,H,H,,,,,,H,H,,10,-,-,-,-,-,Active,Employee,-,,-,-,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP009,sonal.n@2factor.in,23-Nov-1993,Sonal Naidu,H,H,P,P,p,P,p,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,2.00,,-,2.00,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP061,dipti.j@2factor.in,13-Oct-2000,Dipti Jogale,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,-,,-,-,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP064,aryan.s@2factor.in,18-Sep-2003,Aryan Singh,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,-,,-,-,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP066,karishma.y@2factor.in,01-Feb-2005,Karishma Yadav,H,H,P,P,P,P,P,H,H,P,P,p,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,-,,-,-,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP065,khushi.g@2factor.in,25-Dec-2004,Khushi Gupta,H,H,P,P,P,p,P,H,H,P,P,P,P,,H,H,P,,,,,H,H,,,,,,H,H,,10,-,-,-,-,-,Active,Employee,-,,-,-,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP067,saurabh.p@2factor.in,25-Jun-2005,Saurabh Patel,H,H,P,P,P,P,p,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,-,,-,-,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP068,siddhant.p@2factor.in,18-Jan-2005,Siddhant Pal,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Employee,1.00,,-,1.00,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP063,tejas.p@2factor.in,28-Jun-2004,Tejas Parmar,H,H,P,P,P/2,P,P,H,H,P,P,P,,,H,H,,,,,,H,H,,,,,,H,H,,7,-,-,-,1,0.50,Active,Employee,0.50,,0.50,-,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP062,tejas.r@2factor.in,11-Oct-2000,Tejas Ranveer,H,H,P,P,P,P,P,H,H,P,P,P,,,H,H,,,,,,H,H,,,,,,H,H,,8,-,-,-,-,-,Active,Employee,1.50,,-,1.50,-,,,,,#VALUE!,,,,,,,,,,,1
+EMP069,neha.r@2factor.in,14-Jan-2002,Neha Rajput,H,H,,,,,P,H,H,A,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,4,-,-,1,-,1.00,Active,Employee,New Joinee,,1.00,-,-,(1.00),,,,#VALUE!,,,,,,,,,,,1
+,disha.s@2factor.in,09-Apr-2005,Disha Shah,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Intern,2.00,1.50,-,3.50,-,,,,,,,,,,,,,,,,
+,vartika.u@2factor.in,01-Feb-2006,Vartika Upadhyay,H,H,A,A,A,A,A,H,H,A,A,A,P,,H,H,,,,,,H,H,,,,,,H,H,,1,-,-,8,-,8.00,Active,Intern,-,,8.00,-,-,(8.00),,,,#VALUE!,,,,,,,,,,,1
+,kartika.j@2factor.in,24-Oct-2005,Kartika John,H,H,P,P,P,A,P,H,H,P,P,A,P,,H,H,,,,,,H,H,,,,,,H,H,,7,-,-,2,-,2.00,Active,Intern,-,,2.00,-,-,(2.00),,,,#VALUE!,,,,,,,,,,,1
+,lubaina.g@2factor.in,20-Aug-2006,Lubaina Ghadiali,H,H,P,P,WFH,P,WFH,H,H,P,WFH,WFH,WFH,,H,H,,,,,,H,H,,,,,,H,H,,4,-,5,-,-,-,Active,Intern,-,,-,-,-,,,,,#VALUE!,,,,,,,,,,,1
+,gagan.g@2factor.in,14-Mar-2004,Gagan Ganesh,H,H,P,P,P,P,p,H,H,,,,,,H,H,,,,,,H,H,,,,,,H,H,,5,-,-,-,-,-,Active,Intern,0.50,,-,0.50,-,,,,,#VALUE!,,,,,,,,,,,1
+,divya.g@2factor.in,13-Aug-2006,Divya Goyal,H,H,P,P,P,P,P,H,H,A,P,P,A,,H,H,,,,,,H,H,,,,,,H,H,,7,-,-,2,-,2.00,Active,Intern,2.00,,2.00,-,-,,,,,,,,,,,,,,,,0
+,khushi.gh@2factor.in,17-May-2007,Khushi Ghadigaonkar,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Intern,2.00,,-,2.00,-,,,,Total,,,,,,,,,,,,50 work days
+,neha.y@2factor.in,11-Feb-2007,Neha yadav,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Intern,1.00,,-,1.00,-,,,,,,,,,,,,,,,,
+,aditya.k@2factor.in,12-Dec-2003,Aditya Koroth,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Intern,-,,-,-,-,,,,Half-days breakup,Leave dates,,,,,,,,,,,Total count
+,manta.p@2factor.in,07-Apr-2004,Mamta Pal,H,H,P,P,P,P,P,H,H,P,A,P,P,,H,H,,,,,,H,H,,,,,,H,H,,8,-,-,1,-,1.00,Active,Intern,-,,1.00,-,-,(1.00),,,Samuel Goshi,10-Aug,,,,,,,,,,,1
+,kashish.a@2factor.in,22-Nov-2004,Kashish Ayare,H,H,P,P,P,P,P,H,H,P,P,P,P,,H,H,,,,,,H,H,,,,,,H,H,,9,-,-,-,-,-,Active,Intern,-,,-,-,-,,,,Tejas Parmar,05-Aug,,,,,,,,,,,1
+,,,,H,H,,,,,,H,H,,,,,,H,H,,,,,,H,H,,,,,,H,H,,,,,,,,,,,,,,,,,,,#VALUE!,,,,,,,,,,,1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1.50,27.00,75.00,,(15.50),,,,#VALUE!,,,,,,,,,,,1
+,,,Total Present for the day,-,-,38,35,34,35,35,-,-,32,35,34,35,1,-,-,1,-,1,-,-,-,-,-,-,-,-,-,-,-,-,316,,,,,,,,,,,,,,,,,#VALUE!,,,,,,,,,,,1
+,,,Total Half-day for the day,-,-,-,-,1,-,-,-,-,1,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,2,,,,,,,,,,,,,,,,,#VALUE!,,,,,,,,,,,1
+,,,Total WFH for the day,-,-,3,4,5,4,5,-,-,3,4,4,4,3,-,-,3,3,3,3,3,-,-,3,3,3,3,3,-,-,3,72,,,,,,,,,,,,,,,,,#VALUE!,,,,,,,,,,,1
+,,,Total Absents for the day,-,-,1,3,2,3,3,-,-,6,3,4,1,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,26,,,,,,,,,,,,,,,,,#VALUE!,,,,,,,,,,,1
+,,,Total Count,-,-,42,42,42,42,43,-,-,42,42,42,40,4,-,-,4,3,4,3,3,-,-,3,3,3,3,3,-,-,3,416,,,,,,,,,,,,,,,,,#VALUE!,,,,,,,,,,,1
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Check,,-,,,,,,,,,,,,,,,,Total,,,,,,,,,,,,9 Half-days
+,,,Count of active Employees,32,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,9 Half-days is equivalent to,,,4.5 work days
+,,,Count of active Interns,11,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Total,,,54.5 workdays
+,,,Resigned Employee (LWD in current month ),0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Check,,,27.00
+,,,Resigned Intern (LWD in current month ),0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Variance,,,(27.50)
+,,,On-Notice period,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,Total,43,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,check,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
