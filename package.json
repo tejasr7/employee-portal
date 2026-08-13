@@ -4,7 +4,7 @@
   "description": "Employee registration and birthday portal with admin management",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node seed.js && node server.js",
     "dev": "node server.js"
   },
   "keywords": [
