@@ -1,5 +1,20 @@
 [
   {
+    "name": "Gagan Ganesh",
+    "dob": "2004-03-14",
+    "department": "",
+    "email": "gagan.g@2factor.in",
+    "password_hash": "3b988bef869d7a172dfc8517adf83ea4:c345be9ab96044bba0f4dbe80964e6bbe8a5194b37aefd150ff48765d6b424448dae119d732a91b58fa00ee9f6e9477aefa3d22cd19dd0fca1ec90a1ad0d6a20",
+    "status": "Active",
+    "category": "Intern",
+    "joining_date": null,
+    "notice_period_end": null,
+    "internship_start": null,
+    "internship_end": null,
+    "date_of_resignation": null,
+    "role": "employee"
+  },
+  {
     "name": "Aastha Pandey",
     "dob": "2004-05-03",
     "department": "Accounts & Finance",
